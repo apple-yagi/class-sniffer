@@ -8,3 +8,7 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.5.18", features = ["derive"] }
 cssparser = "0.34.0"
+oxc_allocator = "0.30.4"
+oxc_ast = "0.30.4"
+oxc_parser = "0.30.4"
+oxc_span = "0.30.4"

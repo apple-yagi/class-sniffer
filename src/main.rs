@@ -1,5 +1,5 @@
 use clap::Parser;
-use classsniffer::css;
+use classsniffer::{css, tsx};
 use std::fs;
 
 #[derive(Parser, Debug)]
@@ -24,4 +24,8 @@ fn main() {
     for classname in classnames {
         println!("{}", classname);
     }
+
+    // TSXファイルを読み込み
+    let tsx_content = fs::read_to_string("testdata/test.tsx").expect("Failed to read the Tsx file");
+    tsx::extract_classname(&tsx_content);
 }

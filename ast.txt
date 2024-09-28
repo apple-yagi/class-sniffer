@@ -1,0 +1,78 @@
+Program { 
+    span: Span {
+        start: 0, end: 75 
+    }, 
+    source_type: SourceType { 
+        language: TypeScript, 
+        module_kind: Module, 
+        variant: Jsx 
+    }, 
+    hashbang: None, 
+    directives: Vec([]), 
+    body: Vec([
+        ExportNamedDeclaration(
+            ExportNamedDeclaration { 
+                span: Span { 
+                    start: 0, end: 74 
+                }, 
+                declaration: Some(FunctionDeclaration(Function { 
+                    type: FunctionDeclaration, 
+                    span: Span { 
+                        start: 7, end: 74 
+                    }, 
+                    id: Some(BindingIdentifier { 
+                        span: Span { 
+                            start: 16, end: 20 
+                        }, 
+                        name: "Test", 
+                        symbol_id: Cell { 
+                            value: None 
+                        }
+                    }
+                ), 
+                generator: false, 
+                async: false, 
+                declare: false, 
+                type_parameters: None, 
+                this_param: None, 
+                params: FormalParameters { 
+                    span: Span { 
+                        start: 20, end: 22 
+                    }, 
+                    kind: FormalParameter, 
+                    items: Vec([]), 
+                    rest: None 
+                }, 
+                return_type: None, 
+                body: Some(FunctionBody { 
+                    span: Span { 
+                        start: 23, end: 74 
+                    }, 
+                    directives: Vec([]), 
+                    statements: Vec([ReturnStatement(ReturnStatement { 
+                        span: Span { 
+                            start: 27, end: 72 
+                        }, 
+                        argument: Some(JSXElement(JSXElement { 
+                            span: Span { 
+                                start: 34, end: 71 
+                            }, 
+                            opening_element: JSXOpeningElement { 
+                                span: Span { 
+                                    start: 34, end: 55 
+                                }, 
+                                self_closing: false, 
+                                name: Identifier(JSXIdentifier { 
+                                    span: Span { 
+                                        start: 35, end: 37 
+                                    }, name: "h1" 
+                                }), 
+                                attributes: Vec([Attribute(JSXAttribute { 
+                                    span: Span { start: 38, end: 54 
+                                }, 
+                                name: Identifier(JSXIdentifier { 
+                                    span: Span { 
+                                        start: 38, end: 47 
+                                    }, name: "className" 
+                                }), 
+                                value: Some(StringLiteral(StringLiteral { span: Span { start: 48, end: 54 }, value: "fuga" })) })]), type_parameters: None }, closing_element: Some(JSXClosingElement { span: Span { start: 66, end: 71 }, name: Identifier(JSXIdentifier { span: Span { start: 68, end: 70 }, name: "h1" }) }), children: Vec([Text(JSXText { span: Span { start: 55, end: 66 }, value: "Hello World" })]) })) })]) }), scope_id: Cell { value: None } })), specifiers: Vec([]), source: None, export_kind: Value, with_clause: None })]), scope_id: Cell { value: None } }
