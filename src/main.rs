@@ -1,5 +1,5 @@
 use clap::Parser;
-use classsniffer::classnames;
+use classsniffer::css;
 use std::fs;
 
 #[derive(Parser, Debug)]
@@ -18,7 +18,7 @@ fn main() {
     let css_content = fs::read_to_string(css_file_path).expect("Failed to read the CSS file");
 
     // クラス名を抽出
-    let classnames = classnames::extract(&css_content);
+    let classnames = css::extract_classname(&css_content);
 
     // 結果を表示
     for classname in classnames {

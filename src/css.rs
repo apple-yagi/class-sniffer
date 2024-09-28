@@ -1,7 +1,7 @@
 use cssparser::{Parser, ParserInput, Token};
 
 // クラス名を抽出する関数
-pub fn extract(css_content: &str) -> Vec<String> {
+pub fn extract_classname(css_content: &str) -> Vec<String> {
     let mut classnames = Vec::new();
 
     // パーサーの入力を作成
@@ -34,6 +34,6 @@ fn test_extract() {
             color: blue;
         }
     "#;
-    let classnames = extract(css_content);
+    let classnames = extract_classname(css_content);
     assert_eq!(classnames, vec!["foo", "bar"]);
 }
