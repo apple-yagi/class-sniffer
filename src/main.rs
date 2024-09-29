@@ -18,14 +18,20 @@ fn main() {
     let css_content = fs::read_to_string(css_file_path).expect("Failed to read the CSS file");
 
     // クラス名を抽出
-    let classnames = css::extract_classname(&css_content);
-
-    // 結果を表示
-    for classname in classnames {
-        println!("{}", classname);
-    }
+    let css_classnames = css::extract_classname(&css_content);
 
     // TSXファイルを読み込み
     let tsx_content = fs::read_to_string("testdata/test.tsx").expect("Failed to read the Tsx file");
-    tsx::extract_classname(&tsx_content);
+    let tsx_classnames = tsx::extract_classname(&tsx_content);
+
+    // 結果を表示
+    println!("Classnames in the CSS file:");
+    for classname in css_classnames {
+        println!("{}", classname);
+    }
+
+    println!("Classnames in the TSX file:");
+    for classname in tsx_classnames {
+        println!("{}", classname);
+    }
 }

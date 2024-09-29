@@ -9,10 +9,10 @@ pub fn extract_classname(tsx_content: &str) -> Vec<String> {
     let source_type = SourceType::from_path("Counter.tsx").unwrap();
 
     let ParserReturn {
-        program,  // AST
-        errors,   // Syntax errors
-        panicked, // Parser encountered an error it couldn't recover from
-        trivias,  // Comments, whitespace, etc.
+        program,     // AST
+        errors: _,   // Syntax errors
+        panicked: _, // Parser encountered an error it couldn't recover from
+        trivias: _,  // Comments, whitespace, etc.
     } = Parser::new(&allocator, tsx_content, source_type).parse();
 
     // クラス名を抽出
@@ -21,7 +21,7 @@ pub fn extract_classname(tsx_content: &str) -> Vec<String> {
     for node in program.body {
         match node {
             oxc_ast::ast::Statement::ExportNamedDeclaration(e) => {
-                for d in &e.declaration {
+                if let Some(d) = &e.declaration {
                     match d {
                         oxc_ast::ast::Declaration::FunctionDeclaration(c) => {
                             c.body.iter().for_each(|b| {
@@ -32,7 +32,17 @@ pub fn extract_classname(tsx_content: &str) -> Vec<String> {
                                                 &r.argument
                                             {
                                                 for attr in e.opening_element.attributes.iter() {
-                                                    println!("{:?}", attr);
+                                                    attr.as_attribute().map(|attr| {
+                                                        if attr.is_identifier("className") {
+                                                            if let Some(a) = &attr.value {
+                                                                a.as_string_literal().map(|s| {
+                                                                    classnames
+                                                                        .push(s.value.to_string());
+                                                                });
+                                                            }
+                                                        }
+                                                    });
+                                                    // println!("{:?}", attr);
                                                 }
                                                 // classnames.push(e.opening_element.attributes[0]);
                                             }
